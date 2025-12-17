@@ -17,9 +17,9 @@ var operand2 = 0;
 var operation = null;
 
 function calculate(operand1, operand2, operation) {
-    var uri = location.origin + "/arithmetic";
+    var uri = location.origin + "/calculate";
 
-    // TODO: Add operator
+    // Switch case updated to include the power function mapping
     switch (operation) {
         case '+':
             uri += "?operation=add";
@@ -32,6 +32,9 @@ function calculate(operand1, operand2, operation) {
             break;
         case '/':
             uri += "?operation=divide";
+            break;
+        case '^':
+            uri += "?operation=power";
             break;
         default:
             setError();
@@ -60,7 +63,6 @@ function calculate(operand1, operand2, operation) {
 
 function clearPressed() {
     setValue(0);
-
     operand1 = 0;
     operand2 = 0;
     operation = null;
@@ -86,7 +88,6 @@ function numberPressed(n) {
     }
 
     value += "";
-
     setValue(value);
 }
 
@@ -104,7 +105,6 @@ function decimalPressed() {
 
 function signPressed() {
     var value = getValue();
-
     if (value != 0) {
         setValue(-1 * value);
     }
@@ -132,13 +132,13 @@ function equalPressed() {
     calculate(operand1, operand2, operation);
 }
 
-// TODO: Add key press logics
+// Updated keypress logic to include the ^ key
 document.addEventListener('keypress', (event) => {
     if (event.key.match(/^\d+$/)) {
         numberPressed(event.key);
     } else if (event.key == '.') {
         decimalPressed();
-    } else if (event.key.match(/^[-*+/]$/)) {
+    } else if (event.key.match(/^[-*+/^]$/)) {
         operationPressed(event.key);
     } else if (event.key == '=') {
         equalPressed();
@@ -197,4 +197,4 @@ function setLoading(loading) {
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].disabled = loading;
     }
-}
+}git add public/client.js
