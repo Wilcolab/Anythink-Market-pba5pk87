@@ -46,3 +46,9 @@ jobs:
         uses: trywilco/actions@main
         with:
           engine: ${{ secrets.WILCO_ENGINE_URL }}
+- name: Prepare backend command
+  run: |
+    chmod +x backend/scripts/backup.sh
+    echo "githubActions.backend.cmd=backend/scripts/backup.sh" >> $GITHUB_ENV
+    echo "Resolved path:"
+    ls -la backend/scripts
