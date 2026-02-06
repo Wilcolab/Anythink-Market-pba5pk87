@@ -1,0 +1,5 @@
+Jun 15 12:12:34 combo sshd(pam_unix)[23394]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=218.188.2.4 
+Jun 16 04:10:22 combo su(pam_unix)[25178]: session opened for user cyrus by (uid=0)
+Jun 16 04:16:17 combo su(pam_unix)[25548]: session opened for user sean by (uid=0)
+Jun 17 07:07:00 combo ftpd[29504]: connection from 24.54.76.216
+Jun 18 01:30:59 combo sshd(pam_unix)[31201]: authentication failure; rhost=adsl-70-242-75-179.dsl.ksc2mo.swbell.net 
