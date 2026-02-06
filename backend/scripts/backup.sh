@@ -1,7 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-set -e
+# Get the absolute path of the repository root
+REPO_ROOT=$(git rev-parse --show-toplevel)
 
-LOG_FILE=$1
-
-tar -czf /backup.tar.gz "$LOG_FILE"
+# Create the archive in the repo root
+# $1 is the log file passed as an argument
+tar -czf "$REPO_ROOT/backup.tar.gz" "$1"
