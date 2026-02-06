@@ -1,21 +1,21 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Check if a file argument is provided
-if [ -z "$1" ]; then
+set -e
+
+# Check argument
+if [ $# -eq 0 ]; then
   echo "Usage: $0 <log_file>"
   exit 1
 fi
 
-LOGFILE=$1
-ARCHIVE="/backup.tar.gz"
+LOG_FILE="$1"
 
-# Check if the file exists
-if [ ! -f "$LOGFILE" ]; then
-  echo "Error: File not found: $LOGFILE"
+# Verify file exists
+if [ ! -f "$LOG_FILE" ]; then
+  echo "File not found: $LOG_FILE"
   exit 1
 fi
 
-# Create the archive in root directory
-tar -czf $ARCHIVE $LOGFILE
-
-echo "Backup created at $ARCHIVE"
+# Always create archive in repo root
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+tar -czf "$REPO_ROOT/backup.tar.gz" "$LOG_FILE"
